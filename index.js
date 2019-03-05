@@ -27,6 +27,10 @@ async function analyzeCommits(pluginConfig, context) {
   const releaseRules = loadReleaseRules(pluginConfig, context);
   const config = await loadParserConfig(pluginConfig, context);
   let releaseType = null;
+  
+  // Adding a new condition check to allow prerelease build for no commits
+  if (commits.length === 0)
+    return RELEASE_TYPES[6];
 
   filter(
     commits.map(({message, ...commitProps}) => ({rawMsg: message, message, ...commitProps, ...parser(message, config)}))
