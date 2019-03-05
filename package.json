@@ -97,5 +97,8 @@
   "xo": {
     "prettier": true,
     "space": true
+  },
+  "installConfig": {
+    "pnp": true
   }
 }
